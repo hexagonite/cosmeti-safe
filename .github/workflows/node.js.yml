@@ -27,6 +27,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         working-directory: ./CosmetiSafe.Web/ClientApp
+        cache-dependency-path: ./CosmetiSafe.Web/ClientApp/package-lock.json
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
