@@ -1,9 +1,12 @@
+using CosmetiSafe.Data;
+using Microsoft.AspNetCore.Http.Json;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddSwaggerGen();
-builder.Services.AddControllersWithViews();
+ConfigureServices(builder);
 
 var app = builder.Build();
 
@@ -35,3 +38,16 @@ app.MapControllerRoute(
 app.MapFallbackToFile("index.html");
 
 app.Run();
+
+void ConfigureServices(WebApplicationBuilder webApplicationBuilder)
+{
+    var services = webApplicationBuilder.Services;
+    
+    services.AddSwaggerGen();
+    services.AddControllersWithViews();
+    builder.Services.AddDbContext<CosmetiSafeContext>();
+    builder.Services.Configure<JsonOptions>(options =>
+    {
+        options.SerializerOptions.Converters.Add(new Cysharp.Serialization.Json.UlidJsonConverter());
+    });
+}

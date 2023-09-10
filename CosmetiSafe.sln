@@ -2,6 +2,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosmetiSafe.Web", "CosmetiSafe.Web\CosmetiSafe.Web.csproj", "{B33D0398-BF6C-40BB-92D9-2F9E0DD69101}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosmetiSafe.Domain", "CosmetiSafe.Domain\CosmetiSafe.Domain.csproj", "{505E2136-4548-4292-8482-5A77677C7616}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosmetiSafe.Data", "CosmetiSafe.Data\CosmetiSafe.Data.csproj", "{339DFE3A-0E4D-42CA-9150-2C3B275AC570}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosmetiSafe.Migrations", "CosmetiSafe.Migrations\CosmetiSafe.Migrations.csproj", "{BEA0C4D3-A1D7-49F1-8642-B2358E9C454D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +18,17 @@ Global
 		{B33D0398-BF6C-40BB-92D9-2F9E0DD69101}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B33D0398-BF6C-40BB-92D9-2F9E0DD69101}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B33D0398-BF6C-40BB-92D9-2F9E0DD69101}.Release|Any CPU.Build.0 = Release|Any CPU
+		{505E2136-4548-4292-8482-5A77677C7616}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{505E2136-4548-4292-8482-5A77677C7616}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{505E2136-4548-4292-8482-5A77677C7616}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{505E2136-4548-4292-8482-5A77677C7616}.Release|Any CPU.Build.0 = Release|Any CPU
+		{339DFE3A-0E4D-42CA-9150-2C3B275AC570}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{339DFE3A-0E4D-42CA-9150-2C3B275AC570}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{339DFE3A-0E4D-42CA-9150-2C3B275AC570}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{339DFE3A-0E4D-42CA-9150-2C3B275AC570}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEA0C4D3-A1D7-49F1-8642-B2358E9C454D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEA0C4D3-A1D7-49F1-8642-B2358E9C454D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEA0C4D3-A1D7-49F1-8642-B2358E9C454D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEA0C4D3-A1D7-49F1-8642-B2358E9C454D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
