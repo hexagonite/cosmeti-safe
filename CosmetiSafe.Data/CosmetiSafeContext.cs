@@ -20,16 +20,6 @@ public class CosmetiSafeContext : DbContext, ICosmetiSafeContext
     public CosmetiSafeContext(DbContextOptions<CosmetiSafeContext> options) : base(options)
     {
     }
-    
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer(options =>
-        {
-            options.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
-            options.MigrationsAssembly("CosmetiSafe.Migrations");
-        });
-        optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
-    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

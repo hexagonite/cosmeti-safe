@@ -1,10 +1,15 @@
 using CosmetiSafe.Data;
+using CosmetiSafe.Web.Options;
 using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
+builder.Configuration
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json",
+        optional: true, reloadOnChange: true)
+    .Build();
 
 ConfigureServices(builder);
 
@@ -43,11 +48,30 @@ void ConfigureServices(WebApplicationBuilder webApplicationBuilder)
 {
     var services = webApplicationBuilder.Services;
     
-    services.AddSwaggerGen();
     services.AddControllersWithViews();
-    builder.Services.AddDbContext<CosmetiSafeContext>();
-    builder.Services.Configure<JsonOptions>(options =>
+    
+    services.AddSwaggerGen();
+    services.Configure<JsonOptions>(options =>
     {
         options.SerializerOptions.Converters.Add(new Cysharp.Serialization.Json.UlidJsonConverter());
+    });
+    
+    services.Configure<DatabaseOptions>(builder.Configuration.GetSection(DatabaseOptions.OptionsName));
+
+    var sqlConnectionString = builder.Configuration["Database:SqlConnectionString"];
+    
+    services.AddDbContextPool<ICosmetiSafeContext, CosmetiSafeContext>(options =>
+    {
+        var dbContextOptionsBuilder = options.UseSqlServer(sqlConnectionString, optionsBuilder =>
+        {
+            optionsBuilder.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
+            optionsBuilder.MigrationsAssembly("CosmetiSafe.Migrations");
+        });
+        
+        if (webApplicationBuilder.Environment.IsDevelopment())
+        {
+            dbContextOptionsBuilder.EnableSensitiveDataLogging();
+        }
+
     });
 }

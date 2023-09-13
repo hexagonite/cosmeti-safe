@@ -33,6 +33,12 @@
     <Content Include="..\Directory.Packages.props">
       <Link>Directory.Packages.props</Link>
     </Content>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.Development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -44,6 +50,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CosmetiSafe.Data\CosmetiSafe.Data.csproj" />
+    <ProjectReference Include="..\CosmetiSafe.Migrations\CosmetiSafe.Migrations.csproj" />
   </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
