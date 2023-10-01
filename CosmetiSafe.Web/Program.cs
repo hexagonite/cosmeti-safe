@@ -21,6 +21,7 @@ ConfigureServices(builder);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseMiddleware<ExceptionHandler>();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
