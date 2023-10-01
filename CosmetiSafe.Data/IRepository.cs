@@ -1,4 +1,4 @@
-﻿namespace CosmetiSafe.Domain;
+﻿namespace CosmetiSafe.Data;
 
 public interface IRepository<TEntity> where TEntity : class
 {

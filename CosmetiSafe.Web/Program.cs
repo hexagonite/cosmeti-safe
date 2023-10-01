@@ -1,5 +1,10 @@
+using System.Reflection;
 using CosmetiSafe.Data;
+using CosmetiSafe.Web;
+using CosmetiSafe.Web.Middlewares;
 using CosmetiSafe.Web.Options;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore;
 
@@ -43,6 +48,7 @@ app.MapControllerRoute(
 app.MapFallbackToFile("index.html");
 
 app.Run();
+return;
 
 void ConfigureServices(WebApplicationBuilder webApplicationBuilder)
 {
@@ -55,6 +61,8 @@ void ConfigureServices(WebApplicationBuilder webApplicationBuilder)
     {
         options.SerializerOptions.Converters.Add(new Cysharp.Serialization.Json.UlidJsonConverter());
     });
+    
+    services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
     
     services.Configure<DatabaseOptions>(builder.Configuration.GetSection(DatabaseOptions.OptionsName));
 

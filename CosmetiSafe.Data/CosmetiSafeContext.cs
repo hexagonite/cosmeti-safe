@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CosmetiSafe.Data;
 
-public class CosmetiSafeContext : DbContext, ICosmetiSafeContext
+public sealed class CosmetiSafeContext : DbContext, ICosmetiSafeContext
 {
     public DbSet<Category> Categories { get; set; }
     public DbSet<Concern> Concerns { get; set; }

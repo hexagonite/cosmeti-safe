@@ -1,4 +1,4 @@
-﻿using CosmeticsWeb.Core.Entities;
+﻿using CosmetiSafe.Domain.Models.Enums;
 
 namespace CosmetiSafe.Domain.Models;
 
