@@ -3,8 +3,6 @@ using CosmetiSafe.Data;
 using CosmetiSafe.Web;
 using CosmetiSafe.Web.Middlewares;
 using CosmetiSafe.Web.Options;
-using FluentValidation;
-using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore;
 
@@ -54,8 +52,12 @@ return;
 void ConfigureServices(WebApplicationBuilder webApplicationBuilder)
 {
     var services = webApplicationBuilder.Services;
+    services.AddControllersWithViews()
+        .ConfigureApiBehaviorOptions(options =>
+        {
+            options.InvalidModelStateResponseFactory = ModelStateValidator.ValidateModelState;
+        });
     
-    services.AddControllersWithViews();
     
     services.AddSwaggerGen();
     services.Configure<JsonOptions>(options =>
